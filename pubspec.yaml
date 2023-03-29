@@ -66,6 +66,13 @@ flutter:
     - MePhoto2.jpg
     - MePhoto.jpg
     - NL.png
+    - utwente.jpg
+    - download.jpg
+    - UT.png
+    - cplusplus.png
+    - flutter.png
+    - csharp.png
+    - csharpL.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

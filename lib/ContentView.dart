@@ -1,4 +1,5 @@
 import 'package:dillimono/AboutMe.dart';
+import 'package:dillimono/Projects.dart';
 import 'package:dillimono/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,9 +28,18 @@ class _ContentViewState extends State<ContentView> {
       color: widget.mode == viewMode.dark
           ? const Color.fromARGB(255, 38, 38, 38)
           : Colors.white,
+      height: MediaQuery.of(context).size.height,
       child: Stack(
         children: [
-          AboutMe(mode: widget.mode),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.5,
+              child: currentView == View.aboutMe
+                  ? AboutMe(mode: widget.mode)
+                  : Projects(mode: widget.mode),
+            ),
+          ),
           Positioned(
             top: 100,
             child: Container(
@@ -69,36 +79,36 @@ class _ContentViewState extends State<ContentView> {
                       ),
                     ),
                   ),
-                  Flexible(
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          currentView = View.projects;
-                        });
-                      },
-                      child: Text(
-                        "CURRENT\nPROJECTS",
-                        style: widget.mode == viewMode.dark
-                            ? GoogleFonts.passionOne(
-                                color: currentView == View.projects
-                                    ? Colors.white
-                                    : const Color.fromRGBO(0, 140, 255, 0.1),
-                                fontWeight: FontWeight.normal,
-                                fontSize:
-                                    currentView == View.projects ? 120 : 50,
-                              )
-                            : GoogleFonts.passionOne(
-                                color: currentView == View.projects
-                                    ? const Color.fromARGB(255, 38, 38, 38)
-                                    : const Color.fromRGBO(0, 140, 255, 0.1),
-                                fontWeight: FontWeight.normal,
-                                fontSize:
-                                    currentView == View.projects ? 120 : 50,
-                              ),
-                        textAlign: TextAlign.right,
-                      ),
-                    ),
-                  ),
+                  // Flexible(
+                  //   child: TextButton(
+                  //     onPressed: () {
+                  //       setState(() {
+                  //         currentView = View.projects;
+                  //       });
+                  //     },
+                  //     child: Text(
+                  //       "CURRENT\nPROJECTS",
+                  //       style: widget.mode == viewMode.dark
+                  //           ? GoogleFonts.passionOne(
+                  //               color: currentView == View.projects
+                  //                   ? Colors.white
+                  //                   : const Color.fromRGBO(0, 140, 255, 0.1),
+                  //               fontWeight: FontWeight.normal,
+                  //               fontSize:
+                  //                   currentView == View.projects ? 120 : 50,
+                  //             )
+                  //           : GoogleFonts.passionOne(
+                  //               color: currentView == View.projects
+                  //                   ? const Color.fromARGB(255, 38, 38, 38)
+                  //                   : const Color.fromRGBO(0, 140, 255, 0.1),
+                  //               fontWeight: FontWeight.normal,
+                  //               fontSize:
+                  //                   currentView == View.projects ? 120 : 50,
+                  //             ),
+                  //       textAlign: TextAlign.right,
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
